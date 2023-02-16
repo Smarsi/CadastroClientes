@@ -12,7 +12,7 @@ class Base(models.Model):
 
 class Cliente(Base):
     nome = models.CharField('Nome', max_length=200, blank=False, null=False)
-    cpf = models.IntegerField('CPF', max_length=11, blank=False, null=False)
+    cpf = models.IntegerField('CPF', blank=False, null=False)
     nascimento = models.DateField('Data de Nascimento', auto_now=False, auto_now_add=False)
 
     class Meta:
