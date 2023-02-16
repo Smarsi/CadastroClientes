@@ -31,28 +31,27 @@ python -m venv venv
 ```
 <p>Este comando cria uma máquina virtual do python para evitar de instalarmos os pacotes necessários no python original da sua máquina (boas práticas de desenvolvimento com python).</p>
 <br>
-<br>
 
 * 4º: Vamos ativar nossa venv usando o seguintes comandos:
 <br>
-* Navegue até a pasta scripts da venv
+1- Navegue até a pasta scripts da venv
 
     ```
     cd venv/scripts
     ```
 <br>
 
-* Agora execute o seguinte comando
+2- Agora execute o seguinte comando
 
-    ```
+    
     activate
-    ```
+    
 
-* Em seguida basta usar o seguinte comando quantas vezes forem necessárias para voltar para raiz do projeto:
+3- Em seguida basta usar o seguinte comando quantas vezes forem necessárias para voltar para raiz do projeto:
 
-    ```
+    
     cd..
-    ```
+    
 <br>
 
 * 5º: Agora é necessário instalar os pacotes necessários para usarmos o projeto. Para isso, embarcado no projeto temos um arquivo chamado "requirements.txt" que contém os pacotes e suas respectivas versões usadas durante o desenvolvimento.
