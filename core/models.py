@@ -12,7 +12,7 @@ class Base(models.Model):
 
 class Cliente(Base):
     nome = models.CharField('Nome', max_length=200, blank=False, null=False)
-    cpf = models.IntegerField('CPF', blank=False, null=False)
+    cpf = models.BigIntegerField('CPF', unique=True, blank=False, null=False)
     nascimento = models.DateField('Data de Nascimento', auto_now=False, auto_now_add=False)
 
     class Meta:
@@ -20,4 +20,4 @@ class Cliente(Base):
         verbose_name_plural = 'Clientes'
 
     def __str__(self):
-        return str(self.pk, self.nome, self.cpf, self.nascimento)
+        return str(self.nome + ' - CPF:'+ str(self.cpf))
