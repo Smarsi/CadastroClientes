@@ -11,15 +11,16 @@ from .models import Cliente
 from .serializers import ClienteSerializer
 
 #import para fazer verificação de CPF
-from .verificar_cpf import VerificaCPF
+from .verificar_cpf import CheckCPF
 
 class CadCustumer(APIView):
     def post(self, request, format=None):
         reponse = []
         dados = request.data
-        new_cpf = VerificaCPF(dados['cpf'])
+        new_cpf = CheckCPF(dados['cpf'])
+        print(new_cpf)
         if new_cpf['is_valid'] == True:
-            dados['cpf'] = new_cpf['cpf_tratado']
+            dados['cpf'] = new_cpf['new_cpf']
             serializer = ClienteSerializer(data=dados)
             if serializer.is_valid():
                 serializer.save()
@@ -27,9 +28,9 @@ class CadCustumer(APIView):
             else:
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         else:
-            return Response('Erro - CPF Inválido \n Por favor digite um CPF válido', status=status.HTTP_422_UNPROCESSABLE_ENTITY)
-    
-class GetAllCostumers(APIView):
+            return Response('Erro - CPF Inválido *** Por favor digite um CPF válido ***', status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+                    
+class GetAllCustumers(APIView):
     def get(self, request, format=None):
         clientes = Cliente.objects.all()
         serializer = ClienteSerializer(clientes, many=True)
