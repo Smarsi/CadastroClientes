@@ -17,7 +17,7 @@ class Cliente(Base):
 
     class Meta:
         verbose_name = 'Cliente'
-        verbose_plural_name = 'Clientes'
+        verbose_name_plural = 'Clientes'
 
     def __str__(self):
         return str(self.pk, self.nome, self.cpf, self.nascimento)
