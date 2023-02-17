@@ -7,5 +7,5 @@ from .views import CadCustumer, GetAllCustumers, GetCustumer
 urlpatterns = [
     path('new-custumer/', CadCustumer.as_view()),
     path('consult-all-custumers/', GetAllCustumers.as_view()),
-    path('consult-costumer', GetCustumer.as_view()),
+    path('consult-custumer', GetCustumer.as_view()),
 ]

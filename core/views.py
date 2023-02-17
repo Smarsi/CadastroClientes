@@ -39,10 +39,20 @@ class GetAllCustumers(APIView):
     
 class GetCustumer(APIView):
     def get(self, request, format=None):
-        cliente = Cliente.objects.filter(pk=request.query_params['id'][0])
+        if request.query_params.get('id', None):
+            cliente = Cliente.objects.filter(pk=request.query_params.get('id', None))
+        elif request.query_params.get('nome', None):
+            cliente = Cliente.objects.filter(nome=request.query_params.get('nome', None))
+        elif request.query_params.get('cpf', None):
+            cpf_check=request.query_params.get('cpf', None)
+            if len(cpf_check.split('.')) > 1 or len(cpf_check.split('-')) > 1 or len(cpf_check) > 11:
+                return Response('Por favor verifique o CPF passado. Para realizar pesquisa usando cpf digite apenas os 11 números (sem pontos ou traços).', status=status.HTTP_400_BAD_REQUEST)
+            else:
+                cliente = Cliente.objects.filter(cpf=request.query_params.get('cpf', None))                
+        else:
+            return Response('Por favor forneça um valor para pesquisar um cliente (id, nome ou cpf)', status=status.HTTP_400_BAD_REQUEST)
         if cliente:
             serializer = ClienteSerializer(cliente, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response('Nenhum usuário foi encontrado com o ID fornecido', status=status.HTTP_404_NOT_FOUND)
-
+            return Response('Nenhum usuário foi encontrado com o ID fornecido', status=status.HTTP_400_BAD_REQUEST)
