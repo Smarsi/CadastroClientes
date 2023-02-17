@@ -26,23 +26,45 @@ Aqui será considerado a instalação e execução do projeto por meio do sistem
 
 <b>Passo 1</b>- Primeiramente será necessário baixar ou clonar este repositório em sua máquina local.
 
-Neste repositório do github procure pelo botão verde com o texto "code", logo em seguida clique nele e cópie a URL exibida no drop-down que se abriu.
+Neste repositório do github procure pelo botão verde com o texto "<> code" e logo em seguida clique e copie a URL exibida no drop-down que se abriu.
 
 ![Clone_Repo](https://user-images.githubusercontent.com/38111460/219534943-1150ce06-d64c-44fe-8d2d-e4a14ff7c14b.PNG)
 
-Navegue através de sua interface de comandos até a pasta onde clonou o repositório e digite o seguinte comando substituindo < link > pela url copiada aqui no github:
+Navegue através de sua interface de comandos até a pasta onde deseja clonar o repositório e digite o seguinte comando substituindo < link > pela url copiada aqui no github:
 
 ```
 git clone < link >
 ```
 
-E repita:
+Em seguida acesse a página onde clonou o projeto.
 
 ```
-Até finalizar
+cd <caminho da sua pasta>
+```
+---
+
+<b>Passo 2</b>- Agora será preciso instalar os pacotes necessários para rodar nosso projeto, para isso, iremos utilizar um máquina virtual do python e evitar a instalação desses recursos em seu python original.
+
+Já dentro da pasta do projeto digite o seguinte comando:
+
+```
+python -m venv venv
+```
+Isso fará com que o python crie um máquina virtual chamada 'venv'. Repare que logo após a execução uma nova pasta chamada venv foi criada na raiz do projeto.
+
+Agora será necessário ativar nossa venv, para tal, execute os comandos abaixo:
+
+```
+cd venv/scripts
+
+activate
 ```
 
-Termine com um exemplo de como obter dados do sistema ou como usá-los para uma pequena demonstração.
+Uma vez que a venv é ativada repare que ao lado do caminho exibido na interface de comandos temos uma tag (venv)
+
+![venv_ativada](https://user-images.githubusercontent.com/38111460/219537412-c0592852-6452-49ed-92d1-9f2f7fcde49f.PNG)
+
+---
 
 ## ⚙️ Executando os testes
 
