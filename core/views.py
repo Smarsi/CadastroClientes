@@ -36,7 +36,13 @@ class GetAllCustumers(APIView):
         serializer = ClienteSerializer(clientes, many=True)
 
         return Response(serializer.data, status=status.HTTP_200_OK)
-
-
-
+    
+class GetCustumer(APIView):
+    def get(self, request, format=None):
+        cliente = Cliente.objects.filter(pk=request.query_params['id'][0])
+        if cliente:
+            serializer = ClienteSerializer(cliente, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response('Nenhum usuário foi encontrado com o ID fornecido', status=status.HTTP_404_NOT_FOUND)
 
