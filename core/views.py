@@ -36,10 +36,9 @@ class GetAllCustumers(APIView, LimitOffsetPagination):
 
     def get(self, request, format=None):
         clientes = self.paginate_queryset(queryset=Cliente.objects.all(), request=request)
-        #clientes = self.paginate_queryset(Cliente.objects.all())
         serializer = ClienteSerializer(clientes, many=True)
 
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return self.get_paginated_response(serializer.data)
     
 class GetCustumer(APIView):
     def get(self, request, format=None):
