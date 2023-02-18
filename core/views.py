@@ -3,6 +3,8 @@ from django.shortcuts import render
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.generics import ListAPIView
+from rest_framework.pagination import LimitOffsetPagination
 
 #fazendo import dos models
 from .models import Cliente
@@ -30,9 +32,11 @@ class CadCustumer(APIView):
         else:
             return Response('Erro - CPF Inválido *** Por favor digite um CPF válido ***', status=status.HTTP_422_UNPROCESSABLE_ENTITY)
                     
-class GetAllCustumers(APIView):
+class GetAllCustumers(APIView, LimitOffsetPagination):
+
     def get(self, request, format=None):
-        clientes = Cliente.objects.all()
+        clientes = self.paginate_queryset(queryset=Cliente.objects.all(), request=request)
+        #clientes = self.paginate_queryset(Cliente.objects.all())
         serializer = ClienteSerializer(clientes, many=True)
 
         return Response(serializer.data, status=status.HTTP_200_OK)
