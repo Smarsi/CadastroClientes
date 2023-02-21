@@ -134,6 +134,7 @@ migrations/*
 migrations
 core/migrations
 core/migrations/*
+*/migations/*
 
 #testes
 core copy
