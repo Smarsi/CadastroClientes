@@ -29,4 +29,4 @@ class CpfTestCase(TestCase):
         count_invalido = _ExecuteCount(self.lista_invalido_sem_digito) #a função espera uma lista sem os dois ultimos digitos do cpf
 
         self.assertEqual(self.lista, count)
-        self.assertNotEqual(self.lista_invalido, count_invalido)
+        self.assertNotEqual(self.lista_invalido, count_invalido) # O retorno da função retornará um cpf válido que é diferente do cpf inválido passado (deve retornar "Not Equal")

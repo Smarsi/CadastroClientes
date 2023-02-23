@@ -19,8 +19,9 @@ class CadCustumer(APIView):
     def post(self, request, format=None):
         reponse = []
         dados = request.data
+        print("aqui- --------------")
+        print(dados)
         new_cpf = CheckCPF(dados['cpf'])
-        print(new_cpf)
         if new_cpf['is_valid'] == True:
             dados['cpf'] = new_cpf['new_cpf']
             serializer = ClienteSerializer(data=dados)
