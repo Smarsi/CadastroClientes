@@ -137,4 +137,6 @@ core/migrations/*
 */migations/*
 
 #testes
-core copy
+htmlcov/*
+*/htmlcov
+htmlcov
