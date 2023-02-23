@@ -6,8 +6,10 @@ omit =
     */settings.py
     */manage.py
     */wsgi.py
+    */asgi.py
     */apps.py
     */urls.py
+    */serializers.py
     */admin.py
     */migrations/*
     */tests/*
@@ -15,8 +17,11 @@ omit =
     *\settings.py
     *\manage.py
     *\wsgi.py
+    *\asgi.py
     *\apps.py
     *\urls.py
+    *\serializers.py
     *\admin.py
     *\migrations\*
     *\tests\*
+    

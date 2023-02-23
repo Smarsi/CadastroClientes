@@ -16,7 +16,11 @@ class ClienteTestCase(TestCase):
         self.cpf = "12345678911"
         self.nascimento = "1975-05-21"
 
-    def test_create_cliente(self):
-        cliente = Cliente(self.nome, self.cpf, self.nascimento)
-        print(cliente)
-        self.assertTrue(cliente, self.nome)
+    def test_create_cliente(self): #Verifica se a criação e armazenamento do cliente está acontecendo de forma correta.
+        cliente = Cliente(nome=self.nome, cpf=self.cpf, nascimento=self.nascimento)
+        cliente.save()
+        self.assertTrue(cliente, (self.nome+' - '+self.cpf))
+
+    def test_get_cliente(self):
+        cliente = Cliente.objects.create(nome=self.nome, cpf=self.cpf, nascimento=self.nascimento)
+        self.assertEqual(cliente.__str__(), self.nome + ' - CPF:'+ self.cpf)
