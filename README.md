@@ -64,11 +64,177 @@ Uma vez que a venv é ativada repare que ao lado do caminho exibido na interface
 
 ![venv_ativada](https://user-images.githubusercontent.com/38111460/219537412-c0592852-6452-49ed-92d1-9f2f7fcde49f.PNG)
 
+Agora iremos instalar os pacotes necessários. Para isso, rode o comando abaixo:
+(Certifique-se de ter voltado para a raiz do projeto antes de executar o comando)
+
+```
+pip install -r requirements.txt
+```
+
 ---
 
-## ⚙️ Executando os testes
+<b>Passo 3</b>- Crie um banco de dados e configure as credenciais e portas através do arquivo <b>system/settings.py</b>
+No projeto atual escolhi utilizar o MySQL como banco de dados, porém, caso prefira poderá alterar por outro (para isso consulte a documentação do DJango).
 
-Explicar como executar os testes automatizados para este sistema.
+![image](https://user-images.githubusercontent.com/38111460/220839740-20a2407b-3573-40c7-830e-d5cdf249ce81.png)
+
+Basta alterar os campos 'Name', 'User', 'Password', 'Host' e 'Port' para as informações do seu banco de dados.
+
+---
+
+<b>Passo 4</b>- Feitotudo isso já devemos ser capazes de executar o projeto DJango em sua máquina. Para isso siga os passos a seguir.
+
+<br>
+
+Para iniciarmos o projeto o DJango exige que criemos nossas tabelas do banco de dados. Para isso siga o comando a seguir:
+
+```
+python manage.py makemigrations
+```
+
+Esse comando fará com que apareçam no diretório de nosso projeto uma pasta chamada migrations (é uma pasta de controle do django).
+
+Agora iremos criar efetivamente as tabelas:
+
+```
+python manage.py migrate
+```
+
+Você deverá ver uma mensagem como esta:
+
+![image](https://user-images.githubusercontent.com/38111460/220841113-374d12e0-e7d7-45ed-a747-135226614dad.png)
+
+<br>
+Agora basta rodar o comando abaixo para iniciar o servidor local do projeto e os endpoints já estarão acessíveis:
+
+```
+python manage.py runserver
+```
+
+Neste momento já temos o projeto funcional rodando.
+
+
+---
+
+## ⚙️ Usando o sitema
+
+#### Breve explicação:
+
+<p>A API foi criada seguindo os padrões REST e usa Json como padrão para consulta e cadastro de informações. Todos os módulos criados foram testados e os códigos de testes unitários estão disponíveis dentro do diretório <b>core/tests</b> (olhar commits do projeto para mais detalhes).</p>
+<p>O sistema foi criado em cima dos requisitos passados por e-mail, e conta com 3 endpoints que serão explicados abaixo:</p>
+
+<br>
+
+* <b>/new-custumer/</b> 
+
+Este endpoint permite a criação de um novo cliente no sistema. 
+O formato padrão usado para o cadastro é JSON.
+
+Abaixo um exempo de formato JSON aceito pelo endpoint:
+
+```
+{
+    "nome": "Augustinho Carrara",
+    "cpf": "771.757.960-05",
+    "nascimento": "1986-11-07"
+}
+``` 
+
+<br>
+<br>
+
+* <b>/consult-custumer/</b>  
+
+Este endpoint serve para consultar um cliente em específico que já esteja cadastrado no sistema.
+É necessário passar um parâmetro para realizar a pesquisa, os tipos de parâmetros aceitos são Nome, CPF e ID do cliente e todos são passados diretamente na URL.
+
+<br>
+<b>Exemplos</b>
+<br>
+
+Pesquisando por CPF:
+
+```
+http://localhost:8000/consult-custumer?cpf=14128525600
+```
+
+Pesquisando por Nome:
+
+```
+http://localhost:8000/consult-custumer?nome=Augustinho%Carrara
+```
+Se o nome pesquisado contiver espaços utilize o '%' (navegadores já fazem isso automaticamente e programas de teste como o postman aceitam espaços sem problemas).
+
+Pesquisando por ID:
+
+```
+http://localhost:8000/consult-custumer?id=58
+```
+<br>
+<br>
+
+* <b>/consult-all-custumers/</b>
+
+Este endpoint faz um consulta de todos os clientes cadastrados usando paginação. Por padrão as consultas retornam de 5 em 5 cliente por vez, porém é possível limitar em menos.
+
+Pesquisando com paginação normal:
+
+```
+http://localhost:8000/consult-all-custumers
+```
+
+<br>
+
+Limitando a busca em 2 clientes por request:
+
+```
+http://localhost:8000/consult-all-custumers?limit=2
+```
+
+Exemplo de retorno:
+
+```
+{
+    "count": 21,
+    "next": "http://localhost:8000/consult-all-custumers/?limit=5&offset=5",
+    "previous": null,
+    "results": [
+        {
+            "id": 41,
+            "nome": "Michael Dias",
+            "cpf": 29173301809,
+            "nascimento": "1999-06-13"
+        },
+        {
+            "id": 42,
+            "nome": "Lucas Mendes",
+            "cpf": 22303492874,
+            "nascimento": "1993-12-01"
+        },
+        {
+            "id": 43,
+            "nome": "Silva Rocha",
+            "cpf": 30316044822,
+            "nascimento": "1954-02-19"
+        },
+        {
+            "id": 44,
+            "nome": "Inês Pereira",
+            "cpf": 43350784801,
+            "nascimento": "1985-07-23"
+        },
+        {
+            "id": 45,
+            "nome": "Isabella Moreira",
+            "cpf": 68234315803,
+            "nascimento": "2006-04-03"
+        }
+    ]
+}
+```
+
+
+
 
 ### 🔩 Analise os testes de ponta a ponta
 
@@ -85,6 +251,21 @@ Explique que eles verificam esses testes e porquê.
 ```
 Dar exemplos
 ```
+
+## 📦 Implantação
+
+Adicione notas adicionais sobre como implantar isso em um sistema ativo
+
+## 🛠️ Construído com
+
+Mencione as ferramentas que você usou para criar seu projeto
+
+* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - O framework web usado
+* [Maven](https://maven.apache.org/) - Gerente de Dependência
+* [ROME](https://rometools.github.io/rome/) - Usada para gerar RSS
+
+
+---
 
 ## 📦 Implantação
 
