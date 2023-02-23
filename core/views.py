@@ -19,8 +19,6 @@ class CadCustumer(APIView):
     def post(self, request, format=None):
         reponse = []
         dados = request.data
-        print("aqui- --------------")
-        print(dados)
         new_cpf = CheckCPF(dados['cpf'])
         if new_cpf['is_valid'] == True:
             dados['cpf'] = new_cpf['new_cpf']
@@ -59,4 +57,4 @@ class GetCustumer(APIView):
             serializer = ClienteSerializer(cliente, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
-            return Response('Nenhum usuário foi encontrado com o ID fornecido', status=status.HTTP_400_BAD_REQUEST)
+            return Response('Nenhum usuário foi encontrado com o ID fornecido', status=status.HTTP_404_NOT_FOUND)
