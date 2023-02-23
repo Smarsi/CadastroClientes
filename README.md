@@ -143,8 +143,6 @@ Neste momento já temos o projeto funcional rodando.
 
 <br>
 
----
-
 * <b>/new-custumer/</b> 
 
 Este endpoint permite a criação de um novo cliente no sistema. 
