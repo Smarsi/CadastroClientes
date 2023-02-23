@@ -125,6 +125,8 @@ Neste momento já temos o projeto funcional rodando.
 
 <br>
 
+---
+
 * <b>/new-custumer/</b> 
 
 Este endpoint permite a criação de um novo cliente no sistema. 
@@ -139,9 +141,28 @@ Abaixo um exempo de formato JSON aceito pelo endpoint:
     "nascimento": "1986-11-07"
 }
 ``` 
+O Cpf pode ser passado com ou sem os caracteres especiais (traços e pontos), porém o formato é obrigatoriamente <b>STRING</b>.
+
+<br>
+
+*Responses*:
+
+Ao realizar um cadastro nesse endpoint é verificado se o CPF é válido.
+
+* Caso o CPF seja válido e o cliente seja cadastrado com sucesso o retorno é <b>Código 200 - Sucesso</b>
+
+<br>
+
+* Caso o CPF seja inválido o cliente não será cadastrado e o retorno é <b>Código 422</b>
+
+<br>
+
+* Caso o CPF seja válido e o sistema indentifique que o CPF já está em uso por outro cliente cadastrado previamente o retorno é <b>Código 400 - Bad Request</b>
 
 <br>
 <br>
+
+---
 
 * <b>/consult-custumer/</b>  
 
@@ -172,6 +193,8 @@ http://localhost:8000/consult-custumer?id=58
 ```
 <br>
 <br>
+
+---
 
 * <b>/consult-all-custumers/</b>
 
@@ -233,7 +256,7 @@ Exemplo de retorno:
 }
 ```
 
-
+---
 
 
 ### 🔩 Analise os testes de ponta a ponta
@@ -246,67 +269,77 @@ Dar exemplos
 
 ### ⌨️ E testes de estilo de codificação
 
-Explique que eles verificam esses testes e porquê.
+Os testes criados neste projeto encontram-se na pasta <b>"Core/Tests"</b>, e os módulos testados foram :
+
+* Views (constroem e validam as informações dos endpoints)
+* Models (constroem e gerenciam as informações do BD)
+* Testar CPF (faz os cálculos e validações de CPF)
+
+Para ajudar no mapeamento do que deve ser testado foi usada a biblioteca Coverage, pois ela é mais fácil de usar e trás relatórios detalhados de tudo que foi ou não testado previamente. Além disso, é possível utilizar suas informações para fins de documentação.
+Caso queira executar os testes basta seguir o passo a passo abaixo:
+
+1 - Rode o seguinte comando:
 
 ```
-Dar exemplos
+coverage run manage.py test
 ```
 
-## 📦 Implantação
+Serão executados 12 testes criados por mim para validar o funcionamento da API.
+Você deverá ver uma mensagem semelhante a seguir:
 
-Adicione notas adicionais sobre como implantar isso em um sistema ativo
+![image](https://user-images.githubusercontent.com/38111460/220849915-5aa0c3b6-06a7-4845-acef-e8ff8814d69e.png)
 
-## 🛠️ Construído com
+Esta mensagem mostra a quantidade de testes que foram executados e se está tudo <b>OK</b>!
 
-Mencione as ferramentas que você usou para criar seu projeto
+<br>
+Caso queira é possível ver um relatório detalhado com porcentagens e linhas testadas gerado pelo próprio coverage. Para isso basta executar o seguinte comando:
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - O framework web usado
-* [Maven](https://maven.apache.org/) - Gerente de Dependência
-* [ROME](https://rometools.github.io/rome/) - Usada para gerar RSS
+```
+coverage html
+```
+
+Logo em seguida o coverage criará uma pasta com um arquivo "index.html". Basta acessar este arquivo e ver com mais detalhes os testes executados.
 
 
----
+<br>
 
-## 📦 Implantação
+<b><h3 style="color:blue">Story Telling</h3></b>
+Aqui mostrarei um pouco de como os testes do sistema evoluiram ao longo de seu desenvolvimento.
 
-Adicione notas adicionais sobre como implantar isso em um sistema ativo
+<b>1 - Primeira fase dos testes:</b>
 
-## 🛠️ Construído com
+Neste fase o processo era de mapear aquilo que deveria ou não ser testado (foram excluídos alguns arquivos do próprio django e configurações do python).
 
-Mencione as ferramentas que você usou para criar seu projeto
+Ao executar o Coverage este era o relatório:
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - O framework web usado
-* [Maven](https://maven.apache.org/) - Gerente de Dependência
-* [ROME](https://rometools.github.io/rome/) - Usada para gerar RSS
+![image](https://user-images.githubusercontent.com/38111460/220850755-f8c17463-ad6f-4fd0-9fb1-12c437a8c82a.png)
 
-## 🖇️ Colaborando
+40% apenas do projeto havia sido testado até o momento.
 
-Por favor, leia o [COLABORACAO.md](https://gist.github.com/usuario/linkParaInfoSobreContribuicoes) para obter detalhes sobre o nosso código de conduta e o processo para nos enviar pedidos de solicitação.
+<br>
 
-## 📌 Versão
+<b>2 - Ao final do projeto:</b>
 
-Nós usamos [SemVer](http://semver.org/) para controle de versão. Para as versões disponíveis, observe as [tags neste repositório](https://github.com/suas/tags/do/projeto). 
+Após mapear e remover os arquivos que são padrão do DJango e que não devem ser testados comecei a escrever os testes unitários de cada módulo necesário.
+Para acessar o diretório de testes <a href="https://github.com/Smarsi/CadastroClientes/tree/main/core/tests">clique aqui</a> e veja os códigos desenvolvidos.
+
+Por fim ao executar os testes e relatórios novamente o Coverage exibe o seguinte:
+
+![image](https://user-images.githubusercontent.com/38111460/220851293-9796e40f-e241-408d-94f9-be89b0498b32.png)
+
+Ou seja, todos os módulos e linhas foram testados como deve ser.
+
+
+<br>
+<br>
+<br>
+
+## 🛠️ Este projeto foi contruído com 
+
+* [Django](https://docs.djangoproject.com/en/4.0/) - Framework Web
+* [DJango Rest Framework](https://www.django-rest-framework.org/topics/documenting-your-api/) - Framework Web
 
 ## ✒️ Autores
 
-Mencione todos aqueles que ajudaram a levantar o projeto desde o seu início
 
-* **Um desenvolvedor** - *Trabalho Inicial* - [umdesenvolvedor](https://github.com/linkParaPerfil)
-* **Fulano De Tal** - *Documentação* - [fulanodetal](https://github.com/linkParaPerfil)
-
-Você também pode ver a lista de todos os [colaboradores](https://github.com/usuario/projeto/colaboradores) que participaram deste projeto.
-
-## 📄 Licença
-
-Este projeto está sob a licença (sua licença) - veja o arquivo [LICENSE.md](https://github.com/usuario/projeto/licenca) para detalhes.
-
-## 🎁 Expressões de gratidão
-
-* Conte a outras pessoas sobre este projeto 📢;
-* Convide alguém da equipe para uma cerveja 🍺;
-* Um agradecimento publicamente 🫂;
-* etc.
-
-
----
-⌨️ com ❤️ por [Armstrong Lohãns](https://gist.github.com/lohhans) 😊
+* **Richard Smarsi** - *Ponta a Ponta* - [rsmarsi](https://github.com/smarsi)
