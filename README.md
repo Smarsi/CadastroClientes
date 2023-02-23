@@ -1,7 +1,17 @@
 # Teste Técnico Igma
 
 Uma API de cadastro de clientes.
+<br>
+<p align="center">
+ <a href="#comecando">Começando</a> •
+ <a href="#requisitos">Pré Requisitos</a> • 
+ <a href="#instalacao">Instalação</a> • 
+ <a href="#usando">Usando o Sistema (Endpoints)</a> • 
+ <a href="#testes">Testes</a> • 
+</p>
 
+
+<div id="comecando"/>
 ## 🚀 Começando
 
 Siga as instruções de instalação para rodar o projeto em sua máquina local.
@@ -10,6 +20,8 @@ Vale ressaltar que dentro de cada diretório (relevante) do projeto existe um RE
 
 Consulte **[Implantação](#-implanta%C3%A7%C3%A3o)** para saber como implantar o projeto.
 
+
+<div id="requisitos"/>
 ### 📋 Pré-requisitos
 
 * <b>Git</b> instalado
@@ -18,6 +30,7 @@ Consulte **[Implantação](#-implanta%C3%A7%C3%A3o)** para saber como implantar 
 * Ser capaz de executar comandos por linha de comando (cmd ou power shell por exemplo).
 
 
+<div id="instalacao"/>
 ### 🔧 Instalação
 
 Aqui será considerado a instalação e execução do projeto por meio do sistema operacional <span style="color: blue; font-weight: 800">Windows</span>. Caso necessite executar este projeto em outro sistema operacional utilize o passo a passo trocando as variáveis do windows pelas de seu sistema operacional.
@@ -115,6 +128,8 @@ Neste momento já temos o projeto funcional rodando.
 
 
 ---
+
+<div id="usando"/>
 
 ## ⚙️ Usando o sitema
 
@@ -259,15 +274,8 @@ Exemplo de retorno:
 ---
 
 
-### 🔩 Analise os testes de ponta a ponta
-
-Explique que eles verificam esses testes e porquê.
-
-```
-Dar exemplos
-```
-
-### ⌨️ E testes de estilo de codificação
+<div id="testes"/>
+### 🔩 Testes
 
 Os testes criados neste projeto encontram-se na pasta <b>"Core/Tests"</b>, e os módulos testados foram :
 
