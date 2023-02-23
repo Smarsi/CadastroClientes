@@ -12,6 +12,7 @@ Uma API de cadastro de clientes.
 
 
 <div id="comecando"/>
+
 ## 🚀 Começando
 
 Siga as instruções de instalação para rodar o projeto em sua máquina local.
@@ -22,6 +23,7 @@ Consulte **[Implantação](#-implanta%C3%A7%C3%A3o)** para saber como implantar 
 
 
 <div id="requisitos"/>
+
 ### 📋 Pré-requisitos
 
 * <b>Git</b> instalado
@@ -31,6 +33,7 @@ Consulte **[Implantação](#-implanta%C3%A7%C3%A3o)** para saber como implantar 
 
 
 <div id="instalacao"/>
+
 ### 🔧 Instalação
 
 Aqui será considerado a instalação e execução do projeto por meio do sistema operacional <span style="color: blue; font-weight: 800">Windows</span>. Caso necessite executar este projeto em outro sistema operacional utilize o passo a passo trocando as variáveis do windows pelas de seu sistema operacional.
@@ -275,6 +278,7 @@ Exemplo de retorno:
 
 
 <div id="testes"/>
+
 ### 🔩 Testes
 
 Os testes criados neste projeto encontram-se na pasta <b>"Core/Tests"</b>, e os módulos testados foram :
