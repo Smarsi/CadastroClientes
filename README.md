@@ -1,4 +1,4 @@
-# Um exemplo de API usando Python + DJango Rest Framework
+# API em Python + DJango Rest Framework
 
 Uma API de cadastro de clientes.
 <br>
