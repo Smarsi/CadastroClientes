@@ -1,4 +1,4 @@
-# Teste Técnico Igma
+# Um exemplo de API usando Python + DJango Rest Framework
 
 Uma API de cadastro de clientes.
 <br>
