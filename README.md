@@ -1,6 +1,6 @@
 # API em Python + DJango Rest Framework
 
-Uma API de cadastro de clientes.
+Uma API de gerenciamento de clientes.
 <br>
 <p align="center">
  <a href="#comecando">Começando</a> •
